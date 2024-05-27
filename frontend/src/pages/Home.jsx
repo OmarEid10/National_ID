@@ -7,9 +7,13 @@ import Navbar from "../components/Navbar";
 
 function Home() {
   return (
-    <div className=" text-neutral-300 min-h-screen flex flex-col antialiased selection:bg-cyan-300 selection:text-cyan-900">
-      <Navbar />
-      <ID />
+    <div className="min-h-screen flex flex-col justify-between text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
+      <header>
+        <Navbar />
+      </header>
+      <main className="flex-grow">
+        <ID />
+      </main>
       <Footer />
       <Toaster />
     </div>
