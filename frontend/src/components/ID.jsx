@@ -19,7 +19,6 @@ function ID() {
     if (allowedChars.test(event.target.value)) {
       setId(event.target.value);
     }
-
   };
 
   const validateID = (value) => {
@@ -173,7 +172,7 @@ function ID() {
       {validateId == "" ? idForm() : idDetails()}
       {backButton ? (
         <button
-          className="bg-[#4D869C] text-white hover:bg-blue-400 font-bold py-1 px-10 mt-10 rounded flex items-center
+          className="bg-[#4D869C] text-white hover:bg-blue-400 font-bold py-1 px-10 mt-3 rounded flex items-center
           "
           onClick={() => handleBackButton()}
         >
