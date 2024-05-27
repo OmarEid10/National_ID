@@ -15,14 +15,11 @@ function ID() {
   const [backButton, setBackButton] = useState(false);
 
   const handleChange = (event) => {
-    // Allow only numbers and backspace
     const allowedChars = /^\d{0,14}$/;
     if (allowedChars.test(event.target.value)) {
       setId(event.target.value);
     }
-    // // Update error message based on validation
-    // const errorMessage = validateID(event.target.value);
-    // errorMessageRef.current.textContent = errorMessage;
+
   };
 
   const validateID = (value) => {
@@ -65,7 +62,6 @@ function ID() {
       toast.error("الرقم القومى يجب أن يتكون من 14 رقمًا"); // "National ID must be 14 digits"
       return "error";
     }
-    // Add any additional validation rules as needed (e.g., checksum)
     if (value[0] != "2" && value[0] != "3") {
       toast.error("الرقم القومى يجب أن يبدأ برقم 2 أو 3");
       return "error";
@@ -105,7 +101,7 @@ function ID() {
     setValidateID(id);
 
     try {
-      const res = await fetch("http://localhost:5000/api/national", {
+      const res = await fetch("https://national-id.onrender.com/api/national", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
