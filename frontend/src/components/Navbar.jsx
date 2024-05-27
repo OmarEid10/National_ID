@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../assets/kevinRushLogo.png";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
