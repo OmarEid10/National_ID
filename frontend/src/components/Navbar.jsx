@@ -5,7 +5,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="mb-20 flex item-center py-3">
+    <nav className="mb-10 flex item-center py-3">
       <div className="m-4 flex items-center justify-center gap-4 text-2xl">
         <Link
           to="/"
