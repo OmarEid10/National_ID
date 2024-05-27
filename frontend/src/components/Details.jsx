@@ -6,7 +6,7 @@ function Details({ id, year, month, day, gender, isBornAbroad, city }) {
   // max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700
   return (
     <div className="max-w-sm mx-auto  bg-[#948979] shadow-lg  border-gray-700 rounded-lg overflow-hidden my-4 ">
-      <div className="px-6 py-4">
+      <div className="px-6 py-2">
         <div className="flex justify-center">
           <h1 className="font-bold text-4xl mb-2 text-[#153448] border rounded-full border-white p-4">
             بيانات الرقم القومى
