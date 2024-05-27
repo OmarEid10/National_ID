@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Footer from "./components/Footer";
-import ID from "./components/ID";
-import Navbar from "./components/Navbar";
-import { Toaster } from "react-hot-toast";
+
 import About from "./pages/About";
 import Home from "./pages/Home";
 
 function App() {
   return (
-    <Routes>
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
-    </Routes>
+    <div>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+      </Routes>
+      <Toaster />
+    </div>
   );
 }
 

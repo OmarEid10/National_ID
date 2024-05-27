@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-200 text-center dark:bg-neutral-700 absolute bottom-0 left-0 w-full ">
+    <footer className="bg-neutral-200 text-center dark:bg-neutral-700 w-full">
       <div className="p-4 flex justify-center items-center text-neutral-700 dark:text-neutral-200">
         <span className="mr-2">
           © 2024 Copyright:
