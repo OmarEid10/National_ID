@@ -5,20 +5,26 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="mb-10 flex item-center py-2">
-      <div className="m-3 flex items-center justify-center gap-4 text-2xl">
-        <Link
-          to="/"
-          className={location.pathname === "/" ? "text-cyan-300" : ""}
-        >
-          الصفحة الرئيسية
-        </Link>
-        {/* <Link
-          to="/about"
-          className={location.pathname === "/about" ? "text-cyan-300" : ""}
-        >
-          شرح الرقم القومي
-        </Link> */}
+    <nav className="bg-white shadow-sm border-b border-gray-200 py-4 px-6">
+      <div className="container mx-auto flex items-center justify-center">
+        <div className="flex items-center gap-6 text-lg font-medium">
+          <Link
+            to="/"
+            className={`transition duration-200 ${
+              location.pathname === "/"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-700 hover:text-blue-600"
+            }`}
+          >
+            الصفحة الرئيسية
+          </Link>
+          {/* <Link
+            to="/about"
+            className={location.pathname === "/about" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700 hover:text-blue-600"}
+          >
+            شرح الرقم القومي
+          </Link> */}
+        </div>
       </div>
     </nav>
   );

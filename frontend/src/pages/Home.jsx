@@ -1,4 +1,3 @@
-import React from "react";
 
 import { Toaster } from "react-hot-toast";
 import Footer from "../components/Footer";
@@ -7,7 +6,7 @@ import Navbar from "../components/Navbar";
 
 function Home() {
   return (
-    <div className="min-h-screen flex flex-col justify-between text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
+    <div className="min-h-screen flex flex-col justify-between bg-gray-50 text-gray-900 antialiased selection:bg-blue-200 selection:text-blue-900">
       <header>
         <Navbar />
       </header>

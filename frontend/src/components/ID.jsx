@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import  { useState } from "react";
 import toast from "react-hot-toast";
 import Details from "./Details";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -13,6 +13,7 @@ function ID() {
   const [isBornAbroad, setIsBornAbroad] = useState(false);
   const [validateId, setValidateID] = useState([]);
   const [backButton, setBackButton] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const allowedChars = /^\d{0,14}$/;
@@ -98,6 +99,7 @@ function ID() {
       return;
     }
     setValidateID(id);
+    setLoading(true);
 
     try {
       const res = await fetch("https://national-id.onrender.com/api/national", {
@@ -116,6 +118,8 @@ function ID() {
       console.log(data);
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
     // Submit the valid ID (implement your logic here)
     setBackButton(true);
@@ -124,26 +128,39 @@ function ID() {
 
   const idForm = () => {
     return (
-      <div className="flex flex-col items-center justify-center ">
-        <div className="w-full bg-[#948979] rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold md:text-2xl text-center">
+      <div className="flex flex-col items-center justify-center w-full px-4">
+        <div className="w-full max-w-md bg-white rounded-xl shadow-xl border border-gray-200">
+          <div className="p-6 space-y-6">
+            <h1 className="text-xl md:text-2xl font-bold text-center text-gray-800">
               أدخل الرقم القومى المكون من 14 رقم
             </h1>
             <input
-              className="w-full p-2 border border-gray-300 rounded-lg"
+              className="w-full p-3 border bg-inherit rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
               placeholder="الرقم القومى"
               onChange={handleChange}
+              value={id}
             />
             <button
               type="button"
-              className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 
-						focus:outline-none focus:ring-[#24292F]/50 
-              font-medium rounded-lg flex gap-2 p-2 items-center w-full text-center justify-center text-xl"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium rounded-lg py-3 px-4 text-lg transition duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed"
               onClick={handleButtonClick}
+              disabled={loading}
             >
-              إدخال
+              {loading ? "جاري التحميل..." : "إدخال"}
             </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const loadingComponent = () => {
+    return (
+      <div className="flex flex-col items-center justify-center w-full px-4">
+        <div className="w-full max-w-md bg-white rounded-xl shadow-xl border border-gray-200 p-6">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <p className="text-lg text-gray-700">جاري تحميل البيانات...</p>
           </div>
         </div>
       </div>
@@ -168,14 +185,14 @@ function ID() {
   };
 
   return (
-    <div className="container flex flex-col items-center justify-center">
-      {validateId == "" ? idForm() : idDetails()}
-      {backButton ? (
+    <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center min-h-[60vh]">
+      {loading ? loadingComponent() : validateId == "" ? idForm() : idDetails()}
+      {backButton && !loading ? (
         <button
-          className="bg-[#4D869C] text-white hover:bg-blue-400 font-bold py-1 px-10 mt-3 rounded flex items-center
-          "
+          className="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-bold py-2 px-6 mt-4 rounded-lg flex items-center gap-2 transition duration-200 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
           onClick={() => handleBackButton()}
         >
+          <IoMdArrowRoundBack />
           رجوع
         </button>
       ) : null}
