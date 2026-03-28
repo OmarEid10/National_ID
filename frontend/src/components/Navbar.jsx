@@ -18,12 +18,16 @@ const Navbar = () => {
           >
             الصفحة الرئيسية
           </Link>
-          {/* <Link
+          <Link
             to="/about"
-            className={location.pathname === "/about" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700 hover:text-blue-600"}
+            className={`transition duration-200 ${
+              location.pathname === "/about"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-700 hover:text-blue-600"
+            }`}
           >
-            شرح الرقم القومي
-          </Link> */}
+            شرح الرقم القومى
+          </Link>
         </div>
       </div>
     </nav>
